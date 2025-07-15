@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   thread.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mabdelha <mabdelha@student.42.fr>          #+#  +:+       +#+        */
+/*   By: mabdelha <mabdelha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025-04-12 19:48:25 by mabdelha          #+#    #+#             */
-/*   Updated: 2025-04-12 19:48:25 by mabdelha         ###   ########.fr       */
+/*   Created: 2025/04/12 19:48:25 by mabdelha          #+#    #+#             */
+/*   Updated: 2025/07/15 13:10:12 by mabdelha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,6 @@ void	creat_thread(t_data *data)
 	{
 		pthread_create(&data->philosophers[i].thread, NULL, ft_routine,
 			&data->philosophers[i]);
-		usleep(50);
 		i++;
 	}
 	pthread_mutex_unlock(&data->start_mutex);

@@ -3,16 +3,24 @@
 /*                                                        :::      ::::::::   */
 /*   init.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mabdelha <mabdelha@student.42.fr>          #+#  +:+       +#+        */
+/*   By: mabdelha <mabdelha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025-04-11 19:06:01 by mabdelha          #+#    #+#             */
-/*   Updated: 2025-04-11 19:06:01 by mabdelha         ###   ########.fr       */
+/*   Created: 2025/04/11 19:06:01 by mabdelha          #+#    #+#             */
+/*   Updated: 2025/07/15 09:05:48 by mabdelha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philosopher.h"
 
-void	init_philo(t_data *data)
+long long	ft_time(void)
+{
+	struct timeval	time;
+
+	gettimeofday(&time, NULL);
+	return ((time.tv_sec * 1000) + (time.tv_usec / 1000));
+}
+
+int	init_philo(t_data *data)
 {
 	int	i;
 
@@ -22,7 +30,7 @@ void	init_philo(t_data *data)
 	{
 		free(data->forks);
 		printf("Error: malloc failed\n");
-		exit(1);
+		return (1);
 	}
 	while (i < data->philo_count)
 	{
@@ -35,6 +43,7 @@ void	init_philo(t_data *data)
 		data->philosophers[i].data = data;
 		i++;
 	}
+	return (0);
 }
 
 void	init_mutex(t_data *data)
@@ -53,7 +62,7 @@ void	init_mutex(t_data *data)
 	pthread_mutex_init(&data->start_mutex, NULL);
 }
 
-void	init_data(t_data *data, char **argv)
+int	init_data(t_data *data, char **argv)
 {
 	data->philo_count = ft_atoi(argv[1]);
 	data->time_to_die = ft_atoi(argv[2]);
@@ -70,7 +79,8 @@ void	init_data(t_data *data, char **argv)
 	if (!data->forks)
 	{
 		printf("Error: malloc failed\n");
-		exit(1);
+		return (1);
 	}
 	init_mutex(data);
+	return (0);
 }

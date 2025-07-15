@@ -1,5 +1,5 @@
 NAME = philo
-CC = gcc
+CC = cc
 CFLAGS = -Wall -Wextra -Werror
 SRCS = main.c thread.c utils.c \
 		init.c eat.c \

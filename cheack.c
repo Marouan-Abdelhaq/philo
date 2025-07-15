@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   check.c                                            :+:      :+:    :+:   */
+/*   cheack.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mabdelha <mabdelha@student.42.fr>          #+#  +:+       +#+        */
+/*   By: mabdelha <mabdelha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025-04-12 19:47:17 by mabdelha          #+#    #+#             */
-/*   Updated: 2025-04-12 19:47:17 by mabdelha         ###   ########.fr       */
+/*   Created: 2025/04/12 19:47:17 by mabdelha          #+#    #+#             */
+/*   Updated: 2025/07/02 22:09:38 by mabdelha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 int	philo_died(t_data *data, int i)
 {
-	if (ft_time() - data->philosophers[i].last_meal_time > data->time_to_die)
+	if (ft_time() - data->philosophers[i].last_meal_time >= data->time_to_die)
 	{
 		pthread_mutex_lock(&data->print_mutex);
 		pthread_mutex_lock(&data->dead_mutex);
